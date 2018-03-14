@@ -1,0 +1,69 @@
+﻿@model IEnumerable<PetStorePL.ViewModel.PetDetailsViewModel>
+
+@{
+    ViewBag.Title = "Search";
+}
+<h2>Search</h2>
+@using (Html.BeginForm())
+{
+    @Html.Label("Search By")
+    <br />
+    @Html.Label("Pet Type")
+    @Html.RadioButton("option", "PetType")
+    @Html.Label("Price Less Than")
+    @Html.RadioButton("option", "Price")
+    @Html.Label("All")
+    @Html.RadioButton("option", "All")
+    @Html.TextBox("search")<input type="submit"
+                                  name="submit"
+                                  value="Search" />
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PetName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BreedType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PetType)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PetName)
+            </td>
+            <td>
+                <img src="~/Images/@Url.Content(item.ImagePath)" alt="Image" style="height:200px;width:200px;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BreedType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PetType)
+            </td>
+        </tr>
+    }
+
+</table>
+
+
